@@ -1,17 +1,31 @@
 <template>
-  <Main />
+  <div v-if="tokenAuthenticated">
+    <Main />
+  </div>
+  <div v-if="!tokenAuthenticated">
+    <Login />
+  </div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+import Login from '@/views/Login.vue'
 import Main from '@/components/Main.vue'
 
-export default defineComponent({
-  name: 'App',
+export default {
   components: {
+    Login,
     Main
+  },
+  data() {
+    return {
+      tokenAuthenticated: true
+    }
+  },
+  mounted() {
+    console.log('this', this)
+    console.log('mounted')
   }
-})
+}
 </script>
 
 <style lang="stylus">
