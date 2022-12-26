@@ -3,16 +3,18 @@ import { createStore, Store, useStore as baseUseStore } from 'vuex'
 import RootStateTypes, { AllStateTypes } from './types'
 
 import numFactoryModule from './modules/NumFactory'
+import authModule from './modules/auth'
 
 export const store = createStore<RootStateTypes>({
   state: {
     text: 'This is Vuex Root.state.text'
   },
-  getters: {},
-  mutations: {},
-  actions: {},
+  // getters: {},
+  // mutations: {},
+  // actions: {},
   modules: {
-    numFactoryModule
+    numFactoryModule,
+    authModule
   }
 })
 

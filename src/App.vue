@@ -1,29 +1,28 @@
 <template>
-  <div v-if="tokenAuthenticated">
-    <Main />
+  <div v-if="currentUser">
+    <Layout />
   </div>
-  <div v-if="!tokenAuthenticated">
+  <div v-if="!currentUser">
     <Login />
   </div>
 </template>
 
 <script lang="ts">
-import Login from '@/views/Login.vue'
-import Main from '@/components/Main.vue'
+import Login from '@/layouts/login/index.vue'
+import Layout from '@/components/Layout.vue'
+import { useStore } from './store'
 
 export default {
   components: {
     Login,
-    Main
+    Layout
   },
-  data() {
-    return {
-      tokenAuthenticated: true
+  computed: {
+    currentUser() {
+      const store = useStore()
+
+      return store.state.authModule.token
     }
-  },
-  mounted() {
-    console.log('this', this)
-    console.log('mounted')
   }
 }
 </script>

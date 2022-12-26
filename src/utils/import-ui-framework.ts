@@ -1,8 +1,9 @@
 import { App } from 'vue'
-import { ElIcon, ElLoading, ElCard, ElButton } from 'element-plus'
+import ElementPlus from 'element-plus'
+import 'element-plus/lib/theme-chalk/index.css'
 
 export default function importUiFramework(app: App) {
   // Load the Element Plus components as needed
-  app.use(ElButton).use(ElCard).use(ElLoading).use(ElIcon)
+  app.use(ElementPlus)
   return app
 }
